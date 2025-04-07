@@ -47,7 +47,7 @@ export async function registrar(req, res) {
 
     const nuevoCliente = await registrarCliente({ DNI, nombre, telefono, email, edad, peso, altura });
     const token = jwt.sign({ DNI }, process.env.JWT_SECRET, { expiresIn: "72h" });
-    const link = `https://fitmanageback-production.up.railway.app/crear-contrasena/${token}`;
+    const link = `https://fitmanage.netlify.app/crear-contrasena/${token}`;
 
     await enviarCorreo(
       email,
