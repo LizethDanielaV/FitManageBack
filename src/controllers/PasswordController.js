@@ -29,7 +29,7 @@ export const forgotPassword = async (req, res) => {
 
     const token = generarTokenParaRecuperacion(dni, email);
 
-    const resetLink = `${process.env.FRONTEND_URL}/reset-password/${token}`;
+    const resetLink = `https://fitmanage.netlify.app/reset-password/${token}`;
 
     const mensaje = `
   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px; background-color: #f9f9f9;">
