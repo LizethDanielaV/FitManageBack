@@ -2,7 +2,9 @@ import { enviarCorreo } from "../services/EmailServices.js";
 import { generarTokenParaRecuperacion } from "../GenerarToken.js";
 import administrador from "../models/Administrador.js";
 import cliente from "../models/Cliente.js";
+import dotenv from "dotenv";
 
+dotenv.config();
 export const forgotPassword = async (req, res) => {
   try {
     const { dni, email } = req.body;
