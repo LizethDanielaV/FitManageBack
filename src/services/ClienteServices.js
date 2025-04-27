@@ -20,26 +20,27 @@ import membresia from "../models/Membresia.js";
         });
       
         return clientes.map((cliente) => {
-            const suscripciones = cliente.Cliente_Membresia;
-            const ultimaSuscripcion = suscripciones?.[0];
-      
           let diasRestantes = 0;
           let estado = "inactivo";
           let tipoMembresia = "No tiene";
-      
-          if (ultimaSuscripcion) {
-            diasRestantes = calcularDiasRestantes(ultimaSuscripcion.fecha_fin);
-            tipoMembresia = ultimaSuscripcion.membresium.tipo;
-      
-            if (diasRestantes > 0) {
-              estado = "activo";
-            } else {
-              estado = "inactivo";
-              diasRestantes = 0;
+
+          if(cliente.Cliente_Membresia){
+            const suscripciones = cliente.Cliente_Membresia;
+            const ultimaSuscripcion = suscripciones?.[0];
+            if (ultimaSuscripcion) {
+              diasRestantes = calcularDiasRestantes(ultimaSuscripcion.fecha_fin);
+              tipoMembresia = ultimaSuscripcion.membresium.tipo;
+        
+              if (diasRestantes > 0) {
+                estado = "activo";
+              } else {
+                estado = "inactivo";
+                diasRestantes = 0;
+              }
+              
             }
-            
           }
-      
+  
           return {
             DNI: cliente.DNI,
             nombre: cliente.nombre,
