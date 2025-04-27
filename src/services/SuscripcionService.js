@@ -27,12 +27,11 @@ async function registrar(id_cliente, id_membresia) {
     const fechaFin = new Date(
       calcularFechafin(fechaInicio, parseInt(membresia.duracion))
     );
-    const estado = calcularEstado(fechaInicio, fechaFin);
+    //const estado = calcularEstado(fechaInicio, fechaFin);
 
     const suscripcion = await Suscripcion.create({
       fecha_inicio: fechaInicio,
       fecha_fin: fechaFin,
-      estado: estado,
       id_cliente: id_cliente,
       id_membresia: id_membresia,
     });
